@@ -171,7 +171,7 @@ def process_image(image):
 training_folder_basepath = '/content/drive/MyDrive/data-holistic/videos/training_data/'
 training_folder_name = '01'
 
-bg_training_folder_basepath = '/content/drive/MyDrive/data/videos/bg_train_data/'
+bg_training_folder_basepath = '/content/drive/MyDrive/data-holistic/videos/bg_train_data/'
 
 start_file_name = '001_001_001.mp4'
 

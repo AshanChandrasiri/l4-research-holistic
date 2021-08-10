@@ -174,25 +174,36 @@ training_folder_name = '01'
 bg_training_folder_basepath = '/content/drive/MyDrive/data-holistic/videos/bg_train_data/'
 
 start_file_name = '001_001_001.mp4'
+start = False
 
 
-for filename in os.listdir(training_folder_basepath + training_folder_name + '/'):
+for filename in sorted(os.listdir(training_folder_basepath + training_folder_name + '/')):
 
     print('*************************************************************************************************')
 
-    process_video = training_folder_basepath + \
-        training_folder_name + '/' + filename
+    try:
 
-    print('processing video : ' + filename)
-    print('path : ' + process_video)
+        if(start_file_name==filename):
+            start = True
 
-    raw_clip = VideoFileClip(process_video)
+        if(start):
 
-    bg_clip = raw_clip.fl_image(process_image)
+            process_video = training_folder_basepath + \
+                training_folder_name + '/' + filename
 
-    save_path = bg_training_folder_basepath + training_folder_name + '/' + filename
+            print('processing video : ' + filename)
+            print('path : ' + process_video)
 
-    print('save_path : ')
-    print(save_path)
+            raw_clip = VideoFileClip(process_video)
 
-    bg_clip.write_videofile(save_path, audio=False)
+            bg_clip = raw_clip.fl_image(process_image)
+
+            save_path = bg_training_folder_basepath + training_folder_name + '/' + filename
+
+            print('save_path : ')
+            print(save_path)
+
+            bg_clip.write_videofile(save_path, audio=False)
+
+    except:
+        print('error occured')

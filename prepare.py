@@ -173,7 +173,7 @@ training_folder_name = '01'
 
 bg_training_folder_basepath = '/content/drive/MyDrive/data-holistic/videos/bg_train_data/'
 
-start_file_name = '001_001_001.mp4'
+start_file_name = '001_010_003.mp4'
 start = False
 
 
@@ -183,7 +183,7 @@ for filename in sorted(os.listdir(training_folder_basepath + training_folder_nam
 
     try:
 
-        if(start_file_name==filename):
+        if(start_file_name == filename):
             start = True
 
         if(start):

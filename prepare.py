@@ -168,16 +168,18 @@ def process_image(image):
 # bg_clip = raw_clip.fl_image(process_image)
 
 
-training_folder_basepath = '/content/drive/MyDrive/data-holistic/videos/training_data/'
-training_folder_name = '01'
+training_folder_basepath = '/content/drive/MyDrive/data-holistic/videos/testing_data/'
+training_folder_name = ''
+# end with /
 
-bg_training_folder_basepath = '/content/drive/MyDrive/data-holistic/videos/bg_train_data/'
+bg_training_folder_basepath = '/content/drive/MyDrive/data-holistic/videos/bg_testing_data/'
 
-start_file_name = '001_010_003.mp4'
+start_file_name = '001_001_004.mp4'
+end_file_name = '006_001_004.mp4'
 start = False
 
 
-for filename in sorted(os.listdir(training_folder_basepath + training_folder_name + '/')):
+for filename in sorted(os.listdir(training_folder_basepath + training_folder_name)):
 
     print('*************************************************************************************************')
 
@@ -186,10 +188,12 @@ for filename in sorted(os.listdir(training_folder_basepath + training_folder_nam
         if(start_file_name == filename):
             start = True
 
+        if(end_file_name == filename):
+            start = False
+
         if(start):
 
-            process_video = training_folder_basepath + \
-                training_folder_name + '/' + filename
+            process_video = training_folder_basepath + training_folder_name + filename
 
             print('processing video : ' + filename)
             print('path : ' + process_video)
@@ -198,7 +202,7 @@ for filename in sorted(os.listdir(training_folder_basepath + training_folder_nam
 
             bg_clip = raw_clip.fl_image(process_image)
 
-            save_path = bg_training_folder_basepath + training_folder_name + '/' + filename
+            save_path = bg_training_folder_basepath + training_folder_name + filename
 
             print('save_path : ')
             print(save_path)
